@@ -1,0 +1,26 @@
+[project]
+name = "double-slit"
+version = "0.1.0"
+description = "Interactive 3D simulation of the double-slit experiment, with a from-scratch math library."
+requires-python = ">=3.11"
+dependencies = [
+    "PyQt6>=6.6",
+    "pyqtgraph>=0.13",
+    "PyOpenGL>=3.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=5",
+    "pdoc>=14",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "--cov=mathlib --cov=physics --cov-report=term-missing --cov-fail-under=99"
+
+[tool.coverage.run]
+branch = true
+omit = ["app/*"]
